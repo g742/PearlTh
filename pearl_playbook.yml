@@ -1,5 +1,5 @@
 ---
-- name: Setup Yii2 App Environment with Docker, Swarm, and NGINX
+- name: Setup with Docker, Swarm, and NGINX
   hosts: all
   become: yes
   vars:
