@@ -29,4 +29,15 @@ jobs:
         run: |
             docker push golushbz/pearl:latest
             echo "images pushed"
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: connect to ec2 and deploy
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
             
