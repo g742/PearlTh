@@ -3,13 +3,10 @@
   hosts: all
   become: yes
   vars:
-    yii2_container_port: 8080  # Adjust to match your Yii2 app container's exposed port
+    yii2_container_port: 8080  
 
   tasks:
 
-    # ----------------------------
-    # Install Docker and Docker Compose
-    # ----------------------------
     - name: Install required system packages
       apt:
         name:
@@ -48,9 +45,6 @@
         state: started
         enabled: true
 
-    # ----------------------------
-    # Install NGINX, Git, and PHP
-    # ----------------------------
     - name: Install NGINX, Git, PHP
       apt:
         name:
@@ -67,9 +61,6 @@
         state: started
         enabled: true
 
-    # ----------------------------
-    # Initialize Docker Swarm
-    # ----------------------------
     - name: Initialize Docker Swarm
       shell: docker swarm init
       args:
@@ -77,9 +68,6 @@
       register: swarm_result
       ignore_errors: true
 
-    # ----------------------------
-    # Configure NGINX as reverse proxy
-    # ----------------------------
     - name: Create NGINX config for Yii2 app
       copy:
         dest: /etc/nginx/sites-available/yii2
@@ -88,7 +76,7 @@
               listen 80;
               server_name _;
               location / {
-                  proxy_pass http://127.0.0.1:{{ yii2_container_port }};
+                  proxy_pass http://3.15.84.134:{{ yii2_container_port }};
                   proxy_set_header Host $host;
                   proxy_set_header X-Real-IP $remote_addr;
                   proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
