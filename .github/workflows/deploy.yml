@@ -41,6 +41,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
                 set -x
+                cd pearl
                 git pull origin main
                 docker stack rm mystack 
                 sleep 4s
