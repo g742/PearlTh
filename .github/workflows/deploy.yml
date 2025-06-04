@@ -40,4 +40,8 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            
+                set -x
+                git pull
+                docker stack rm mystack 
+                docker stack deploy -c docker-compose.yml mystack 
+                echo "APPLICATION DEPLOYED"
