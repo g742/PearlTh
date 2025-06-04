@@ -40,10 +40,8 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-                set -x
                 cd pearl
                 git pull origin main
-                docker stack rm mystack 
                 sleep 4s
                 docker stack deploy -c docker-compose.yml mystack 
                 echo "APPLICATION DEPLOYED"
