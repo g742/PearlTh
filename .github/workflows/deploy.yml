@@ -43,5 +43,6 @@ jobs:
                 set -x
                 git pull
                 docker stack rm mystack 
+                sleep 4s
                 docker stack deploy -c docker-compose.yml mystack 
                 echo "APPLICATION DEPLOYED"
