@@ -1,9 +1,10 @@
-
 version: '3.8'
 
 services:
   web:
-    image: golushbz/pearl:latest
+    image: golushbz/kkkk:latest
     ports:
       - "8888:8080"
-    restart: unless-stopped
+    deploy:
+      restart_policy:
+        condition: any
