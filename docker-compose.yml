@@ -3,7 +3,7 @@ version: '3.8'
 
 services:
   web:
-    image: golushbz/kkkk:latest
+    image: golushbz/pearl:latest
     ports:
       - "8888:8080"
     restart: unless-stopped
