@@ -43,5 +43,6 @@ jobs:
                 cd pearl
                 git pull origin main
                 sleep 4s
+                docker stack rm mystack 
                 docker stack deploy -c docker-compose.yml mystack 
                 echo "APPLICATION DEPLOYED"
